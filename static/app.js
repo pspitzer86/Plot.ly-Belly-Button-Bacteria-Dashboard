@@ -1,26 +1,29 @@
 const BellyData = "./data/samples.json";
 
 function optionChanged(newId) {
-    // d3.json(BellyData).then(importedData); {
+    d3.json(BellyData).then((importedData) => {
         
-    //     function filteredIds(data) {
-    //         return data.id == newId;
-    //     }
+        function filteredIds(data) {
+            return data.id == newId;
+        }
 
-    //     var demo = importedData.metadata;
-    //     var samples = importedData.samples;
+        var demo = importedData.metadata;
+        var samples = importedData.samples;
 
-    //     var filteredMeta = demo.filter(filteredIds);
-    //     var demoBox = d3.select("#sample-metadata");
+        var filteredMeta = demo.filter(filteredIds);
+        var demoBox = d3.select("#sample-metadata");
 
-    //     demoBox.html("");
-    //     var addBox = demoBox.append("table");
+        demoBox.html("");
+        var addBox = demoBox.append("table");
 
-    //     var demoKeys = Object.keys(filteredMeta[0]);
-    //     demoKeys.forEach(key => {
-    //         var row = addBox.append("tr");
-    //         row.append("td").text((`${key}: ${filteredMeta[0][key]}`));
-    //     });
+        console.log(newId);
+        console.log(filteredMeta[0]);
+
+        var demoKeys = Object.keys(filteredMeta[0]);
+        demoKeys.forEach(key => {
+            var row = addBox.append("tr");
+            row.append("td").text((`${key}: ${filteredMeta[0][key]}`));
+        });
 
         // var filterSamp = samples.filter(filteredIds);
         // var makeBar = d3.select("#bar");
@@ -97,7 +100,7 @@ function optionChanged(newId) {
         //   Plotly.newPlot("MyDiv", data2, layout2);
           
 
-    //}
+    });
 }
 
 
