@@ -1,7 +1,7 @@
 const BellyData = "./data/samples.json";
 
 function optionChanged(newId) {
-    d3.json(BellyData).then(importedData) {
+    d3.json(BellyData).then(importedData); {
         var demo = importedData.metadata;
         var samples = importedData.samples;
 
@@ -21,12 +21,12 @@ function optionChanged(newId) {
         var makeBar = d3.select("#bar");
 
         makeBar.html("");
-        
+
         var sortSamp = filterSamp.sort(function compareFunction(firstNum, secondNum) {
             // resulting order is (3, 2, 1)
             return secondNum - firstNum;
           });
-        var reversedSamp = sortSamp.reverse();
+        var reversedSamp = sortSamp.reverse(10);
 
         var trace1 = {
             type: "bar",
