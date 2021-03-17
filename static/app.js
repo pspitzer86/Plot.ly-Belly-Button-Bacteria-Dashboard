@@ -31,7 +31,7 @@ function optionChanged(newId) {
         var trace1 = {
             type: "horizontalbar",
             x: sample_values,
-            y: out_ids,
+            y: otu_ids,
             text: otu_labels,
             line: {
               color: "#17BECF"
