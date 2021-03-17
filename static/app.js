@@ -101,7 +101,7 @@ function optionChanged(newId) {
 }
 
 
-d3.json(BellyData).then(importedData); {
+d3.json(BellyData).then((importedData) => {
     
     var patients = importedData.names;
     d3.selectAll("#selDataset").on("change", optionChanged);
@@ -114,5 +114,5 @@ d3.json(BellyData).then(importedData); {
     }
 
     optionChanged(patients[0]);
-    
-}
+
+});
