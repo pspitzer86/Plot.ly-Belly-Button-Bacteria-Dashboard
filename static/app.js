@@ -49,7 +49,7 @@ function optionChanged(newId) {
 
         var trace1 = {
             x: reversedSamp.map(values => values.sample_values),
-            y: reversedSamp.map(values => `OTU ${values.otu_id}`),
+            y: reversedSamp.map(values => `OTU ${values.otu_id} `),
             text: reversedSamp.map(values => values.otu_labels),
             type: "bar",
             orientation: "h",
