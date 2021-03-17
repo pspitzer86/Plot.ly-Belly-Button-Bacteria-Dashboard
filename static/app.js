@@ -96,62 +96,15 @@ function optionChanged(newId) {
 }
 
 
-var patients = 
+d3.json(BellyData).then(importedData); {
+    
+    var patients = importedData.names;
+    d3.selectAll("#selDataset").on("change", optionChanged);
 
-// This function is called when a dropdown menu item is selected
-function updatePlotly() {
     // Use D3 to select the dropdown menu
     var dropdownMenu = d3.select("#selDataset");
+
     // Assign the value of the dropdown menu option to a variable
     var dataset = dropdownMenu.property("value");
-  
 
-
-    numArray.sort(function compareFunction(firstNum, secondNum) {
-        // resulting order is (3, 2, 1)
-        return secondNum - firstNum;
-      });
-      var reversedArray = numArray4.reverse()
-
-
-
-      var trace1 = {
-        type: "scatter",
-        mode: "lines",
-        name: name,
-        x: dates,
-        y: closingPrices,
-        line: {
-          color: "#17BECF"
-        }
-      };
-  
-      // Candlestick Trace
-      var trace2 = {
-        type: "candlestick",
-        x: dates,
-        high: highPrices,
-        low: lowPrices,
-        open: openingPrices,
-        close: closingPrices
-      };
-
-
-      var layout = {
-        title: `${stock} closing prices`,
-        xaxis: {
-          range: [startDate, endDate],
-          type: "date"
-        },
-        yaxis: {
-          autorange: true,
-          type: "linear"
-        },
-        showlegend: false
-      };
-  
-      Plotly.newPlot("plot", data, layout);
-  
-    });
-  }
-    
+}
