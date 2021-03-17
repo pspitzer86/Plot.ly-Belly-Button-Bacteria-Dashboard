@@ -97,7 +97,7 @@ function optionChanged(newId) {
         //   Plotly.newPlot("MyDiv", data2, layout2);
           
 
-    }
+    //}
 }
 
 
@@ -109,7 +109,10 @@ d3.json(BellyData).then(importedData); {
     // Use D3 to select the dropdown menu
     var dropdownMenu = d3.select("#selDataset");
 
-    // Assign the value of the dropdown menu option to a variable
-    var dataset = dropdownMenu.property("value");
+    for (i=0; i < patients.length; i++) {
+        dropdownMenu.append("option").attr("value", patients[i]).text(patients[i]);
+    }
 
+    optionChanged(patients[0]);
+    
 }
