@@ -32,7 +32,7 @@ function optionChanged(newId) {
             type: "horizontalbar",
             x: sample_values,
             y: out_ids,
-            name: otu_labels,
+            text: otu_labels,
             line: {
               color: "#17BECF"
             }
