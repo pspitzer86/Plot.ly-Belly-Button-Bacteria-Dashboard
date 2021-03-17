@@ -2,10 +2,15 @@ const BellyData = "./data/samples.json";
 
 function optionChanged(newId) {
     d3.json(BellyData).then(importedData); {
+        
+        function filteredIds(data) {
+            return data.id == newId;
+        }
+
         var demo = importedData.metadata;
         var samples = importedData.samples;
 
-        var filteredMeta = demo.filter(demo.id);
+        var filteredMeta = demo.filter(filteredIds);
         var demoBox = d3.select("#sample-metadata");
 
         demoBox.html("");
@@ -17,7 +22,7 @@ function optionChanged(newId) {
             row.append("td").text((`${key}: ${filteredMeta[0][key]}`));
         });
 
-        var filterSamp = samples.filter(samples.id);
+        var filterSamp = samples.filter(filteredIds);
         var makeBar = d3.select("#bar");
 
         makeBar.html("");
@@ -99,7 +104,7 @@ function optionChanged(newId) {
 d3.json(BellyData).then(importedData); {
     
     var patients = importedData.names;
-    d3.selectAll("#selDataset").on("change", optionChanged);
+    d3.selectAll("#selDataset").on("change", optionChanged[0]);
 
     // Use D3 to select the dropdown menu
     var dropdownMenu = d3.select("#selDataset");
