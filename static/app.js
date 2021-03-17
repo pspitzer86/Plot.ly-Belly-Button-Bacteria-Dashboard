@@ -3,15 +3,12 @@ const BellyData = "./data/samples.json";
 function optionChanged(newId) {
     d3.json(BellyData).then((importedData) => {
 ​
-		
 		var demo = importedData.metadata;
         var samples = importedData.samples;
-​
 ​
         function filteredIds(data) {
             return data.id == newId;
         }
-​
 ​
         var filteredMeta = demo.filter(filteredIds);
 ​
@@ -94,34 +91,35 @@ function optionChanged(newId) {
           Plotly.newPlot("bar", data, layout);
 ​
 ​
-          var trace2 = {
-            mode: "markers",
-            x: otuIds,
-            y: sampleValues,
-            text: otuLabels,
-            marker: {
-                color: otuIds,
-                size: sampleValues,
-            }
-          };
+        //   var trace2 = {
+        //     mode: "markers",
+        //     x: otu_ids,
+        //     y: sample_values,
+        //     text: otu_labels,
+        //     marker: {
+        //         color: otu_ids,
+        //         size: sample_values,
+        //     }
+        //   };
 ​
-          var data2 = [trace2];
+        //   var data2 = [trace2];
 ​
-          var layout2 = {
-            title: `${newId} Belly Bacteria`,
-            height: 600,
-            width: 1000,
-            xaxis: {
-              name: "OTU ID"
-            },
-            yaxis: {
-
-              name: "Sample Value"
-            },
-            showlegend: false
-          };
+        //   var layout2 = {
+        //     title: `${newId} Belly Bacteria`,
+        //     height: 600,
+        //     width: 1000,
+        //     xaxis: {
+        //       autorange: true,
+        //       name: "OTU ID"
+        //     },
+        //     yaxis: {
+        //       autorange: true,
+        //       name: "Sample Value"
+        //     },
+        //     showlegend: false
+        //   };
       
-          Plotly.newPlot("bubble", data2, layout2);
+        //   Plotly.newPlot("MyDiv", data2, layout2);
           
 ​
     });
