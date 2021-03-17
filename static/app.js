@@ -1,6 +1,6 @@
 const bellyData = "./data/samples.json"
 
-var patients = d3.json(bellyData).then(data => data.names);
+var patients = d3.json(bellyData).then(data => data.names.values);
 
 var dropDown = d3.select("#selDataset");
 
