@@ -29,14 +29,68 @@ function optionChanged(newId) {
         var reversedSamp = sortSamp.reverse(10);
 
         var trace1 = {
-            type: "bar",
-            x: ,
-            y: ,
-            orientation: "h",
+            type: "horizontalbar",
+            x: sample_values,
+            y: out_ids,
+            name: otu_labels,
             line: {
               color: "#17BECF"
             }
           };
+
+          var data = [trace1];
+
+          var layout = {
+            title: `${newId} Top 10 Belly Bacteria`,
+            height: 600,
+            width: 600,
+            xaxis: {
+              autorange: true,
+              name: "Sample Values"
+            },
+            yaxis: {
+              autorange: true,
+              name: "OTU ID"
+            },
+            showlegend: false
+          };
+      
+          Plotly.newPlot("bar-plot", data, layout);
+
+
+          var makeBubble = d3.select("#bubble");
+          makeBubble.html("");
+
+          var trace2 = {
+            mode: "markers",
+            x: otu_ids,
+            y: sample_values,
+            text: otu_labels,
+            marker: {
+                color: otu_ids,
+                size: sample_values,
+            }
+          };
+
+          var data2 = [trace2];
+
+          var layout2 = {
+            title: `${newId} Belly Bacteria`,
+            height: 600,
+            width: 1000,
+            xaxis: {
+              autorange: true,
+              name: "OTU ID"
+            },
+            yaxis: {
+              autorange: true,
+              name: "Sample Value"
+            },
+            showlegend: false
+          };
+      
+          Plotly.newPlot("MyDiv", data2, layout2);
+          
 
     }
 }
