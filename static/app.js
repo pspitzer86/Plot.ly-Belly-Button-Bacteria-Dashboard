@@ -26,6 +26,21 @@ function optionChanged(newId) {
         // });
 
         var filterSamp = samples.filter(filteredIds);
+
+        var otuIds = filterSamp[0].otu_ids;
+        var otuLabels = filterSamp[0].otu_labels;
+        var sampleValues = filterSamp[0].sample_values;
+
+        var sampleArray = [];
+
+        for (i = 0; i < filterSamp.length; i++) {
+            sampleDict = {};
+
+            sampleDict = {"otu_id": otuIds[i], "otu_labels": otuLabels[i], "sample_values": sampleValues[i]};
+
+            sampleArray.push(sampleDict);
+        }
+
         var makeBar = d3.select("#bar");
 
         makeBar.html("");
@@ -40,9 +55,9 @@ function optionChanged(newId) {
 
         var trace1 = {
             type: "horizontalbar",
-            x: sample_values,
-            y: otu_ids,
-            text: otu_labels,
+            x: reveredSamp.map(values => values.sample_values),
+            y: reversedSamp.map(values => `OTU ${values.otu_ids}`),
+            text: reversedSamp.map(values => values.otu_labels),
             line: {
               color: "#17BECF"
             }
