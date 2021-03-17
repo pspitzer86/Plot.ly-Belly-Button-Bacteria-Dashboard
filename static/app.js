@@ -19,51 +19,53 @@ function optionChanged(newId) {
         console.log(newId);
         console.log(filteredMeta[0]);
 
-        var demoKeys = Object.keys(filteredMeta[0]);
-        demoKeys.forEach(key => {
-            var row = addBox.append("tr");
-            row.append("td").text((`${key}: ${filteredMeta[0][key]}`));
-        });
+        // var demoKeys = Object.keys(filteredMeta[0]);
+        // demoKeys.forEach(key => {
+        //     var row = addBox.append("tr");
+        //     row.append("td").text((`${key}: ${filteredMeta[0][key]}`));
+        // });
 
-        // var filterSamp = samples.filter(filteredIds);
-        // var makeBar = d3.select("#bar");
+        var filterSamp = samples.filter(filteredIds);
+        var makeBar = d3.select("#bar");
 
-        // makeBar.html("");
+        makeBar.html("");
 
-        // var sortSamp = filterSamp.sort(function compareFunction(firstNum, secondNum) {
-        //     // resulting order is (3, 2, 1)
-        //     return secondNum - firstNum;
-        //   });
-        // var reversedSamp = sortSamp.reverse(10);
+        var sortSamp = filterSamp.sort(function compareFunction(firstNum, secondNum) {
+            // resulting order is (3, 2, 1)
+            return secondNum - firstNum;
+          });
+        
+        var sliceSamp = sortSamp.slice(0, 10);
+        var reversedSamp = sliceSamp.reverse();
 
-        // var trace1 = {
-        //     type: "horizontalbar",
-        //     x: sample_values,
-        //     y: otu_ids,
-        //     text: otu_labels,
-        //     line: {
-        //       color: "#17BECF"
-        //     }
-        //   };
+        var trace1 = {
+            type: "horizontalbar",
+            x: sample_values,
+            y: otu_ids,
+            text: otu_labels,
+            line: {
+              color: "#17BECF"
+            }
+          };
 
-        //   var data = [trace1];
+          var data = [trace1];
 
-        //   var layout = {
-        //     title: `${newId} Top 10 Belly Bacteria`,
-        //     height: 600,
-        //     width: 600,
-        //     xaxis: {
-        //       autorange: true,
-        //       name: "Sample Values"
-        //     },
-        //     yaxis: {
-        //       autorange: true,
-        //       name: "OTU ID"
-        //     },
-        //     showlegend: false
-        //   };
+          var layout = {
+            title: `${newId} Top 10 Belly Bacteria`,
+            height: 600,
+            width: 600,
+            xaxis: {
+              autorange: true,
+              name: "Sample Values"
+            },
+            yaxis: {
+              autorange: true,
+              name: "OTU ID"
+            },
+            showlegend: false
+          };
       
-        //   Plotly.newPlot("bar-plot", data, layout);
+          Plotly.newPlot("bar-plot", data, layout);
 
 
         //   var makeBubble = d3.select("#bubble");
