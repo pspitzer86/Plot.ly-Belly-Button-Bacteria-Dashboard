@@ -16,8 +16,8 @@ function optionChanged(newId) {
         demoBox.html("");
         var addBox = demoBox.append("table");
 
-        console.log(newId);
-        console.log(filteredMeta[0]);
+        // console.log(newId);
+        // console.log(filteredMeta[0]);
 
         // var demoKeys = Object.keys(filteredMeta[0]);
         // demoKeys.forEach(key => {
@@ -41,11 +41,13 @@ function optionChanged(newId) {
             sampleArray.push(sampleDict);
         }
 
+        console.log(sampleDict);
+
         var makeBar = d3.select("#bar");
 
         makeBar.html("");
 
-        var sortSamp = filterSamp.sort(function compareFunction(firstNum, secondNum) {
+        var sortSamp = sampleArray.sort(function compareFunction(firstNum, secondNum) {
             // resulting order is (3, 2, 1)
             return secondNum - firstNum;
           });
@@ -55,7 +57,7 @@ function optionChanged(newId) {
 
         var trace1 = {
             type: "horizontalbar",
-            x: reveredSamp.map(values => values.sample_values),
+            x: reversedSamp.map(values => values.sample_values),
             y: reversedSamp.map(values => `OTU ${values.otu_ids}`),
             text: reversedSamp.map(values => values.otu_labels),
             line: {
@@ -66,7 +68,7 @@ function optionChanged(newId) {
           var data = [trace1];
 
           var layout = {
-            title: `${newId} Top 10 Belly Bacteria`,
+            title: `Patient ID: ${newId} - Top 10 OTU's`,
             height: 600,
             width: 600,
             xaxis: {
@@ -80,7 +82,7 @@ function optionChanged(newId) {
             showlegend: false
           };
       
-          Plotly.newPlot("bar-plot", data, layout);
+          Plotly.newPlot("bar", data, layout);
 
 
         //   var makeBubble = d3.select("#bubble");
